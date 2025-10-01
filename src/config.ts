@@ -82,11 +82,11 @@ export const siteConfig = {
       school: "Politecnico di Milano",
       degree: "Master of Science in Computer Science and Engineering",
       dateRange: "2023 - 2026",
-      // achievements: [
-      //   "Graduated Magna Cum Laude with 3.8 GPA",
-      //   "Dean's List all semesters",
-      //   "President of Computer Science Club",
-      // ],
+      achievements: [
+        "GPA: 27.89/30",
+        // "Dean's List all semesters",
+        // "President of Computer Science Club",
+      ],
     },
     {
       school: "Politecnico di Milano",
