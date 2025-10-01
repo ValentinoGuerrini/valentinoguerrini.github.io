@@ -35,6 +35,16 @@ export const siteConfig = {
       skills: ["React", "Node.js", "AWS"],
     },
   ],
+  pubblications: [
+    {
+      name: "AI Dev Roundup Newsletter",
+      description:
+        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
+      link: "https://aidevroundup.com/?ref=devportfolio",
+      skills: ["React", "Node.js", "AWS"],
+    },
+
+  ],
   experience: [
     {
       company: "Tech Company",
