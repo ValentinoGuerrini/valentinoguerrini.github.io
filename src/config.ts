@@ -68,24 +68,34 @@ export const siteConfig = {
     },
   ],
   education: [
-    {
-      school: "University Name",
-      degree: "Bachelor of Science in Computer Science",
-      dateRange: "2014 - 2018",
+        {
+      school: "University of Illinois Chicago",
+      degree: "Master of Science in Computer",
+      dateRange: "2024 - 2025",
       achievements: [
-        "Graduated Magna Cum Laude with 3.8 GPA",
-        "Dean's List all semesters",
-        "President of Computer Science Club",
+        "GPA: 3.71",
+        "Double Degree Program with Politecnico di Milano",
+        "Thesis on High-Performance Computing",
       ],
     },
     {
-      school: "Online Platform",
-      degree: "Full Stack Development Certificate",
-      dateRange: "2019",
+      school: "Politecnico di Milano",
+      degree: "Master of Science in Computer Science and Engineering",
+      dateRange: "2023 - 2026",
+      // achievements: [
+      //   "Graduated Magna Cum Laude with 3.8 GPA",
+      //   "Dean's List all semesters",
+      //   "President of Computer Science Club",
+      // ],
+    },
+    {
+      school: "Politecnico di Milano",
+      degree: "Bachelor of Science in Computer Engineering",
+      dateRange: "2020 - 2023",
       achievements: [
-        "Completed 500+ hours of coursework",
-        "Built 10+ portfolio projects",
-        "Specialized in React and Node.js",
+        "Graded 108/110",
+        // "Built 10+ portfolio projects",
+        // "Specialized in React and Node.js",
       ],
     },
   ],
