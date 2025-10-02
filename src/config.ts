@@ -10,8 +10,8 @@ export const siteConfig = {
     github: "https://github.com/valentinoguerrini",
   },
   aboutMe:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",
-  skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker"],
+    "I am Master’s student with a focus on Hardware Design andReconfigurable Architectures, combining hands-on research at NECSTLab with industry experience through a collaboration with STMicroelectronics. Currently expanding technical expertise through a dual degree in the U.S., developing a robust skill set to tackle complex challenges when tailoring algorithms on specific hardware architectures.",
+  skills: ["RTL", "C", "C++", "Vivado", "Vitis", "FPGAs", "Cryptography"],
   projects: [
     {
       name: "AI Dev Roundup Newsletter",
@@ -37,43 +37,43 @@ export const siteConfig = {
   ],
   pubblications: [
     {
-      name: "AI Dev Roundup Newsletter",
+      name: "Towards the Acceleration of the Sparse Blossom Algorithm for Quantum Error Correction",
       description:
-        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
-      link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "M. Venere, V. Guerrini, B. Branchini, D. Conficconi, D. Sciuto and M. D. Santambrogio",
+      link: "https://ieeexplore.ieee.org/abstract/document/10596535",
+      skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Quantum Computing"],
     },
 
   ],
   experience: [
     {
-      company: "Tech Company",
-      title: "Senior Software Engineer",
-      dateRange: "Jan 2022 - Present",
+      company: "HPCLab, University of Illinois Chicago",
+      title: "Research Assistant",
+      dateRange: "Jan 2025 - Present",
       bullets: [
-        "Led development of microservices architecture serving 1M+ users",
-        "Reduced API response times by 40% through optimization",
-        "Mentored team of 5 junior developers",
+        "Researching MPI AllReduce optimizations for high-performance computing.",
+        "Achieved 3.5× speedup over MPICH with a runtime-configurable Allgather algorithm for small–medium messages.",
+        "Developing an enhanced Reduce-Scatter integration to further optimize AllReduce.",
       ],
     },
     {
-      company: "Startup Inc",
-      title: "Full Stack Developer",
-      dateRange: "Jun 2020 - Dec 2021",
+      company: "NECSTLab, Politecnico di Milano",
+      title: "Student Researcher",
+      dateRange: "Oct 2022 - Present",
       bullets: [
-        "Built and launched MVP product from scratch using React and Node.js",
-        "Implemented CI/CD pipeline reducing deployment time by 60%",
-        "Collaborated with product team to define technical requirements",
+        "Developed ReFHE-NTT FPGA accelerator integrated into Full-RNS HEAAN, enabling arbitrary-size CKKS polynomials with up to 4.5× speedup.",
+        "Developed FPGA architecture for CKKS achieving up to 2149× speedup (KV260) and 798× (VCK5000) for small polynomials over CPU baselines",
+        "Achieved a 2.75x speedup by accelerating the Sparse Blossom Algorithm for Quantum Error Correction on an AMD Alveo U55C FPGA",
       ],
     },
     {
-      company: "Digital Agency",
-      title: "Frontend Developer",
-      dateRange: "Aug 2018 - May 2020",
+      company: "STMicroelectronics",
+      title: "Advanced Research Intern",
+      dateRange: "Sep 2023 - Jan 2024",
       bullets: [
-        "Developed responsive web applications for 20+ clients",
-        "Improved site performance scores by 35% on average",
-        "Introduced modern JavaScript frameworks to legacy codebases",
+        "Joined the SRA security team in the Advanced Research department, focusing on cryptography and embedded systems.",
+        "Conducted a detailed analysis of performance-memory trade-offs in microcontroller applications for different zero-knowledge protocols",
+        "Coordinated with a team of 20+ researchers from both academia and industry",
       ],
     },
   ],
