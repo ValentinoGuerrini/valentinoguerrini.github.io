@@ -6,7 +6,7 @@ export const siteConfig = {
   social: {
     email: "valentino.guerrini@outlook.com",
     linkedin: "https://linkedin.com/in/guerrini",
-    twitter: "https://x.com/rfitzio",
+    //twitter: "https://x.com/rfitzio",
     github: "https://github.com/valentinoguerrini",
   },
   aboutMe:
@@ -80,7 +80,7 @@ export const siteConfig = {
   education: [
         {
       school: "University of Illinois Chicago",
-      degree: "Master of Science in Computer",
+      degree: "Master of Science in Computer Science",
       dateRange: "2024 - 2025",
       achievements: [
         "GPA: 3.71",
