@@ -10,7 +10,7 @@ export const siteConfig = {
     github: "https://github.com/valentinoguerrini",
   },
   aboutMe:
-    "I am Master’s student with a focus on Hardware Design and Reconfigurable Architectures, combining hands-on research at NECSTLab with industry experience through a collaboration with STMicroelectronics. Currently expanding technical expertise through a dual degree in the U.S., developing a robust skill set to tackle complex challenges when tailoring algorithms on specific hardware architectures.",
+    "I am a graduate researcher passionate about high-performance computing, reconfigurable architectures, and applied cryptography. I am currently pursuing a dual Master’s degree in Computer Science at the University of Illinois Chicago and Computer Engineering at the Politecnico di Milano. My work focuses on designing and optimizing MPI communication algorithms for next-generation supercomputers, as well as developing FPGA accelerators for cryptographic workloads such as homomorphic encryption. I have worked across both edge devices like the Kria KV260 and datacenter-class platforms such as the Versal VCK5000 and AMD Alveo U55C, always with the goal of balancing performance and resource efficiency. In addition, I have explored hardware/software trade-offs in embedded cryptography, including protections against side-channel attacks and implementations of zero-knowledge protocols. I am most interested in the intersection of algorithms, hardware design, and distributed systems, and in building technologies that make advanced computation not only faster, but also more secure and accessible.",
   skills: ["RTL", "C", "C++", "Vivado", "Vitis", "FPGAs", "Cryptography"],
   projects: [
     {
@@ -26,6 +26,13 @@ export const siteConfig = {
         "Framework to accelerate Quantum Error Correction on AMD U55C FPGA, achieving a top speedup of 49x with respect to software.",
       link: "https://aidevroundup.com/?ref=devportfolio",
       skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Quantum Computing"],
+    },
+    {
+      name: "Autonomous Visual Inspection Tungsten-Based Coating",
+      description:
+        "Developed in collaboration with Collins Aerospace a hybrid AI–mechatronic system to automate visual inspection of HVOF-coated aerospace rods, achieving >97% scratch detection accuracy and reducing manual workload through automated rod rotation.",
+      link: "https://www.asp-poli.it/asp-projects",
+      skills: ["Machine Learning", "Automation", "Computer Vision", "Embedded Systems", "Multidisciplinary"],
     },
     {
       name: "DPA Attack resistant SHA-3 Algorithm for Cortex-M4 Microcontrollers",
@@ -96,6 +103,15 @@ export const siteConfig = {
         "GPA: 27.89/30",
         // "Dean's List all semesters",
         // "President of Computer Science Club",
+      ],
+    },
+    {
+      school: "Alta Scuola Politecnica",
+      degree: "Multidisciplinary honour program",
+      dateRange: "2023 - 2025",
+      achievements: [
+        "Selective honors program by Politecnico di Milano and Politecnico di Torino for top Master's students",
+        "Focused on interdisciplinary innovation and complex problem-solving",
       ],
     },
     {
