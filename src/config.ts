@@ -10,34 +10,34 @@ export const siteConfig = {
     github: "https://github.com/valentinoguerrini",
   },
   aboutMe:
-    "I am Master’s student with a focus on Hardware Design andReconfigurable Architectures, combining hands-on research at NECSTLab with industry experience through a collaboration with STMicroelectronics. Currently expanding technical expertise through a dual degree in the U.S., developing a robust skill set to tackle complex challenges when tailoring algorithms on specific hardware architectures.",
+    "I am Master’s student with a focus on Hardware Design and Reconfigurable Architectures, combining hands-on research at NECSTLab with industry experience through a collaboration with STMicroelectronics. Currently expanding technical expertise through a dual degree in the U.S., developing a robust skill set to tackle complex challenges when tailoring algorithms on specific hardware architectures.",
   skills: ["RTL", "C", "C++", "Vivado", "Vitis", "FPGAs", "Cryptography"],
   projects: [
     {
-      name: "AI Dev Roundup Newsletter",
+      name: "Homomorphic Encryption Acceleration Through Reconfigurable Fabric",
       description:
-        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
+        "Developed FPGA accelerator for homomorphic encryption, achieving significant speedups for small polynomials and integrating with Full-RNS HEAAN, Finalist in AMD Open Hardware 2024",
+      link: "https://github.com/ValentinoGuerrini/AOHW-24-HERF",
+      skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Cryptography"],
+    },
+    {
+      name: "QuErK: Accelerating Quantum Error Correction through FPGAs",
+      description:
+        "Framework to accelerate Quantum Error Correction on AMD U55C FPGA, achieving a top speedup of 49x with respect to software.",
       link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+      skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Quantum Computing"],
     },
     {
-      name: "Chrome Extension Mastery: Build Full-Stack Extensions with React & Node.js",
+      name: "DPA Attack resistant SHA-3 Algorithm for Cortex-M4 Microcontrollers",
       description:
-        "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
-      link: "https://fullstackextensions.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-    },
-    {
-      name: "ExtensionKit",
-      description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
+        "Implementing the Ishai-Sahai-Wagner (ISW) protection scheme to safeguard the Secure Hash Algorithm 3 (SHA-3) against Differential Power Analysis (DPA) attacks on ARM Cortex M4 microcontrollers.",
       link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+      skills: ["C/C++", "STM32", "Embedded Systems Programming", "Applied Cryptography", "Side-Channel Attack Countermeasures"]
     },
   ],
   pubblications: [
     {
-      name: "Towards the Acceleration of the Sparse Blossom Algorithm for Quantum Error Correction",
+      name: "[IPDPSW] Towards the Acceleration of the Sparse Blossom Algorithm for Quantum Error Correction",
       description:
         "M. Venere, V. Guerrini, B. Branchini, D. Conficconi, D. Sciuto and M. D. Santambrogio",
       link: "https://ieeexplore.ieee.org/abstract/document/10596535",
