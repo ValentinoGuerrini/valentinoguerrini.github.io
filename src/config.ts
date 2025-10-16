@@ -10,8 +10,8 @@ export const siteConfig = {
     github: "https://github.com/valentinoguerrini",
   },
   aboutMe:
-    "I am a graduate researcher pursuing a dual Master’s in Computer Science at the University of Illinois Chicago and Computer Engineering at Politecnico di Milano. My work spans high-performance computing, reconfigurable architectures, and applied cryptography, with a focus on optimizing MPI communication algorithms and developing FPGA accelerators for homomorphic encryption. I have experience with both edge devices (Kria KV260) and datacenter platforms (Versal VCK5000, AMD Alveo U55C), and my broader interests lie at the intersection of algorithms, hardware design, and distributed systems to make computation faster, more secure, and more efficient.",
-  skills: ["RTL", "C", "C++", "Vivado", "Vitis", "FPGAs", "Cryptography"],
+    "I am a graduate researcher pursuing a dual Master's in Computer Science at the University of Illinois Chicago and Computer Engineering at Politecnico di Milano. My work spans high-performance computing, reconfigurable architectures, and applied cryptography, with a focus on optimizing MPI communication algorithms and developing FPGA accelerators for homomorphic encryption. I have experience with both edge devices (Kria KV260) and datacenter platforms (Versal VCK5000, AMD Alveo U55C), and my broader interests lie at the intersection of algorithms, hardware design, and distributed systems to make computation faster, more secure, and more efficient.",
+  skills: ["Verilog", "C", "C++","Java", "Vivado", "Vitis", "FPGAs", "Cryptography"],
   projects: [
     {
       name: "Homomorphic Encryption Acceleration Through Reconfigurable Fabric",
@@ -21,25 +21,32 @@ export const siteConfig = {
       skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Cryptography"],
     },
     {
-      name: "QuErK: Accelerating Quantum Error Correction through FPGAs",
-      description:
-        "Framework to accelerate Quantum Error Correction on AMD U55C FPGA, achieving a top speedup of 49x with respect to software.",
-      link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Quantum Computing"],
-    },
-    {
       name: "Autonomous Visual Inspection Tungsten-Based Coating",
       description:
-        "Developed in collaboration with Collins Aerospace a hybrid AI–mechatronic system to automate visual inspection of HVOF-coated aerospace rods, achieving >97% scratch detection accuracy and reducing manual workload through automated rod rotation.",
+        "Developed in collaboration with Collins Aerospace a hybrid AI-mechatronic system to automate visual inspection of HVOF-coated aerospace rods, achieving >97% scratch detection accuracy and reducing manual workload through automated rod rotation.",
       link: "https://www.asp-poli.it/asp-projects",
       skills: ["Machine Learning", "Automation", "Computer Vision", "Embedded Systems", "Multidisciplinary"],
     },
     {
+      name: "QuErK: Accelerating Quantum Error Correction through FPGAs",
+      description:
+        "FPGA Based Accelerator for Sparse Blossom Algorithm for Quantum Error Correction on AMD U55C FPGA, achieving a top speedup of 49x with respect to software.",
+      link: "https://github.com/ValentinoGuerrini/xohw23-Accelerating-QEC-FPGAs.git",
+      skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Quantum Computing"],
+    },
+    {
       name: "DPA Attack resistant SHA-3 Algorithm for Cortex-M4 Microcontrollers",
       description:
-        "Implementing the Ishai-Sahai-Wagner (ISW) protection scheme to safeguard the Secure Hash Algorithm 3 (SHA-3) against Differential Power Analysis (DPA) attacks on ARM Cortex M4 microcontrollers.",
-      link: "https://extensionkit.io/?ref=devportfolio",
+        "Implemented the Ishai-Sahai-Wagner (ISW) protection scheme to safeguard the Secure Hash Algorithm 3 (SHA-3) against Differential Power Analysis (DPA) attacks on ARM Cortex M4 microcontrollers.",
+      link: "https://github.com/ValentinoGuerrini/CortexM4-ISW-Masked-SHA3.git",
       skills: ["C/C++", "STM32", "Embedded Systems Programming", "Applied Cryptography", "Side-Channel Attack Countermeasures"]
+    },
+    {
+      name: "MyShelfie - Java Multiplayer Board Game",
+      description:
+        "Developed a full Java implementation of the MyShelfie board game with both GUI and networked multiplayer using RMI and sockets. Designed a resilient client-server architecture supporting chat, CLI, and fault tolerance.",
+      link: "https://github.com/ValentinoGuerrini/ing-sw-2023-Gennaro-Poggi-Giliberto-Guerrini.git",
+      skills: ["Java", "RMI", "Sockets", "Multiplayer", "JavaFX", "OOP", "Design Patterns", "Software Design", "Concurrency", "Version Control"]
     },
   ],
   pubblications: [
@@ -48,7 +55,7 @@ export const siteConfig = {
       description:
         "M. Venere, V. Guerrini, B. Branchini, D. Conficconi, D. Sciuto and M. D. Santambrogio",
       link: "https://ieeexplore.ieee.org/abstract/document/10596535",
-      skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Quantum Computing"],
+      //skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Quantum Computing"],
     },
 
   ],
@@ -92,7 +99,7 @@ export const siteConfig = {
       achievements: [
         "GPA: 3.71",
         "Double Degree Program with Politecnico di Milano",
-        "Thesis on High-Performance Computing",
+        "Thesis on High-Performance Computing, MPI AllReduce optimizations",
       ],
     },
     {
@@ -100,7 +107,8 @@ export const siteConfig = {
       degree: "Master of Science in Computer Science and Engineering",
       dateRange: "2023 - 2026",
       achievements: [
-        "GPA: 27.89/30",
+        "GPA: 27.56/30",
+        "Thesis on FPGA acceleration of CKKS Homomorphic Encryption Scheme",
         // "Dean's List all semesters",
         // "President of Computer Science Club",
       ],
