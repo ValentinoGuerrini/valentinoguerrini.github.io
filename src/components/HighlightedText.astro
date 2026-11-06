@@ -1,0 +1,7 @@
+---
+interface Props { text: string }
+// Only explicit **emphasis** is interpreted. Text stays escaped by Astro.
+const { text } = Astro.props;
+const parts = text.split(/(\*\*[^*]+\*\*)/g);
+---
+{parts.map(part => part.startsWith('**') && part.endsWith('**') ? <strong>{part.slice(2,-2)}</strong> : part)}

@@ -197,3 +197,48 @@ html.reading .experience-footer{position:fixed;z-index:10;bottom:0;left:0;right:
 @media(max-width:380px){.site-header{gap:18px}.header-links{gap:13px;font-size:10px}.card-inner{padding:17px}.card-top{margin-bottom:9px}.journey-card h2{font-size:26px}.sketch-icon{width:35px;height:35px}}
 @media(max-height:720px) and (max-width:700px){.card-inner{padding:15px 17px}.card-top{min-height:32px}.sketch-icon{width:32px;height:32px}.card-copy{font-size:12.5px;line-height:1.6}.card-bottom{margin-top:12px}.card-action{min-height:36px}.journey-card h2{font-size:25px}}
 @media(max-width:700px){.route-node,.route-endpoint{display:none}}
+
+/* Keep the deck motion intact; give the content a clear reading hierarchy. */
+.card-copy strong{font-weight:600;color:var(--ink)}
+.card-footnote strong{font-weight:500;color:var(--action)}
+.card-identity{min-width:0;flex:1}
+.institution-logos{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:11px;min-height:34px}
+.institution-logo{display:block;width:auto;height:34px;max-width:146px;object-fit:contain;object-position:left center}
+.logo-polimi{height:37px}.logo-necstlab{height:40px}.logo-st{height:36px;max-width:74px}
+.logo-asp{width:126px;height:auto}.logo-collins{width:126px;height:auto}.logo-uic{width:156px;height:auto}.logo-huawei{width:124px;height:auto}
+.card-metrics{display:flex;gap:30px;margin:20px 0 0}
+.card-metrics>div{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0;padding:0;border:0}
+.card-metrics dt{order:2;font:11px/1.45 var(--sans);color:var(--muted);padding:0}
+.card-metrics dd{order:1;font:500 31px/1.1 var(--sans);letter-spacing:-.045em;color:var(--action);margin:0;font-variant-numeric:tabular-nums}
+.metric-note{font:11px/1.5 var(--sans);color:var(--muted);margin-top:10px;max-width:450px;text-wrap:pretty}
+.card-links{display:flex;align-items:center;flex-wrap:wrap;column-gap:24px}
+.card-links .card-action{gap:10px}
+.header-links a{white-space:nowrap}
+.header-links a[aria-label="Google Scholar"]{gap:0}
+.header-links a[aria-label="Google Scholar"] svg{margin-left:6px}
+.scholar-full{white-space:pre}
+@media(max-width:1024px){
+ .institution-logo{max-width:130px}.logo-polimi{height:33px}.logo-necstlab{height:36px}
+ .institution-logos{gap:12px;min-height:30px;margin-bottom:9px}
+ .card-metrics{margin-top:17px}.card-metrics dd{font-size:29px}
+}
+@media(max-width:700px){
+ .site-header{gap:18px}.header-links{gap:13px;font-size:10px}.scholar-full{display:none}
+ .institution-logos{gap:9px;min-height:24px;margin-bottom:8px}
+ .institution-logo{max-width:112px;height:27px}.logo-polimi{height:29px}.logo-necstlab{height:29px}.logo-st{height:28px}
+ .logo-uic,.logo-huawei,.logo-asp,.logo-collins{height:auto;width:112px}
+ .institution-logos:has(img+img) .logo-polimi{height:23px}.institution-logos:has(img+img) .logo-necstlab{height:25px}
+ .card-top:has(.institution-logos){align-items:flex-start}.card-top:has(.institution-logos) .sketch-icon{margin-top:1px}
+ .card-metrics{gap:16px;margin-top:16px}.card-metrics dd{font-size:27px}.card-metrics dt{font-size:10px;line-height:1.4}
+ .metric-note{font-size:10px;line-height:1.5;margin-top:9px}.card-links{column-gap:16px}
+}
+@media(max-width:380px){
+ .site-header{gap:14px}.header-links{gap:10px}
+ .institution-logos{gap:8px}.institution-logo{max-width:104px}
+ .card-metrics dd{font-size:25px}.card-metrics{gap:12px}
+}
+@media(max-height:720px) and (max-width:700px){
+ .card-metrics{margin-top:12px}.card-metrics dd{font-size:24px}.metric-note{margin-top:7px;font-size:9px}
+}
+
+@media(max-width:700px){.institution-logos:has(.logo-collins){flex-wrap:nowrap;gap:9px}.institution-logos:has(.logo-collins) img{width:80px;min-width:0;height:auto}}

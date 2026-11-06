@@ -1,0 +1,11 @@
+---
+import { institutions, type Institution } from '../institutions';
+interface Props { names: Institution[] }
+const { names } = Astro.props;
+---
+<div class="institution-logos">
+ {names.map(name => {
+  const logo = institutions[name];
+  return <img class={`institution-logo logo-${name}`} src={`/assets/logos/${logo.file}`} width={logo.width} height={logo.height} alt={logo.name} decoding="async" />;
+ })}
+</div>

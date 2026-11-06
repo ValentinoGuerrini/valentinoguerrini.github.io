@@ -1,0 +1,46 @@
+[
+  {
+    "file": "polimi.svg",
+    "institution": "Politecnico di Milano",
+    "source": "https://www.polimi.it/_assets/4b51f00386267395f41e0940abbcd656/Images/logo.svg",
+    "retrieved": "2026-11-06"
+  },
+  {
+    "file": "necstlab.png",
+    "institution": "NECSTLab",
+    "source": "https://necst.it/wp-content/uploads/2019/02/Logo-NECST-Official-small.png",
+    "retrieved": "2026-11-06"
+  },
+  {
+    "file": "asp.png",
+    "institution": "Alta Scuola Politecnica",
+    "source": "https://www.asp-poli.it/wp-content/uploads/2022/01/cropped-ASP-logo-header.png",
+    "retrieved": "2026-11-06"
+  },
+  {
+    "file": "huawei.png",
+    "institution": "Huawei",
+    "source": "https://www.huawei.com/-/media/hcomponent-header/1.0.1.20260908162100/component/img/huawei_logo.png",
+    "retrieved": "2026-11-06"
+  },
+  {
+    "file": "st.svg",
+    "institution": "STMicroelectronics",
+    "source": "https://www.st.com/content/dam/st-crew/st-logo-blue.svg",
+    "retrieved": "2026-11-06"
+  },
+  {
+    "file": "uic.png",
+    "institution": "University of Illinois Chicago",
+    "source": "https://brand.uic.edu/wp-content/uploads/sites/1284/2025/06/Primary-Logo-narrow-crop-2.png",
+    "retrieved": "2026-11-06"
+  },
+  {
+    "file": "collins.svg",
+    "institution": "Collins Aerospace",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/0/04/Collins_logo.svg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Collins_logo.svg",
+    "attributed_author": "Collins Aerospace",
+    "retrieved": "2026-11-06"
+  }
+]

@@ -1,3 +1,5 @@
+import { links } from './links';
+
 export const siteConfig = {
   name: "Valentino Guerrini",
   title: "Hardware Accelerator Researcher",
@@ -23,15 +25,15 @@ export const siteConfig = {
     {
       name: "Autonomous Visual Inspection Tungsten-Based Coating",
       description:
-        "Developed in collaboration with Collins Aerospace a hybrid AI-mechatronic system to automate visual inspection of HVOF-coated aerospace rods, achieving >97% scratch detection accuracy and reducing manual workload through automated rod rotation.",
-      link: "https://www.asp-poli.it/asp-projects",
+        "Developed in collaboration with Collins Aerospace a hybrid AI-mechatronic system to automate visual inspection of HVOF-coated aerospace rods, achieving >97% scratch-detection precision and reducing manual workload through automated rod rotation.",
+      link: links.aviwc,
       skills: ["Machine Learning", "Automation", "Computer Vision", "Embedded Systems", "Multidisciplinary"],
     },
     {
       name: "QuErK: Accelerating Quantum Error Correction through FPGAs",
       description:
-        "FPGA Based Accelerator for Sparse Blossom Algorithm for Quantum Error Correction on AMD U55C FPGA, achieving a top speedup of 49x with respect to software.",
-      link: "https://github.com/ValentinoGuerrini/xohw23-Accelerating-QEC-FPGAs.git",
+        "FPGA Based Accelerator for Sparse Blossom Algorithm for Quantum Error Correction on AMD U55C FPGA, achieving 2.75× speedup for the accelerated flooder component at 2,000 nodes versus the Python baseline on AMD Ryzen 7 3700X.",
+      link: links.qec,
       skills: ["Verilog", "C++", "FPGA Design", "XRT", "Vitis", "Quantum Computing"],
     },
     {

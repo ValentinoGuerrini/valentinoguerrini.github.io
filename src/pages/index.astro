@@ -4,6 +4,9 @@ import { story } from '../chapters';
 import { projects, otherProjects } from '../journey';
 import '../styles/journey.css';
 import SketchIcon from '../components/SketchIcon.astro';
+import InstitutionLogos from '../components/InstitutionLogos.astro';
+import HighlightedText from '../components/HighlightedText.astro';
+import { links } from '../links';
 import {desktopRoute,landmarks} from '../map-layout';
 const arrow = 'M4 15 15 4M5 4h10v10';
 ---
@@ -22,7 +25,7 @@ const arrow = 'M4 15 15 4M5 4h10v10';
  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
  <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
  <link rel="stylesheet" href="/assets/motion/motion.css" />
  <title>Valentino Guerrini — An engineer’s journey</title>
 </head>
@@ -33,6 +36,7 @@ const arrow = 'M4 15 15 4M5 4h10v10';
   <nav class="header-links" aria-label="Find me online">
    <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>
    <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>
+   <a href={links.scholar} target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><span class="scholar-full">Google </span>Scholar<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>
    <a href={`mailto:${siteConfig.social.email}`}>Email<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>
   </nav>
  </header>
@@ -61,11 +65,12 @@ const arrow = 'M4 15 15 4M5 4h10v10';
        <h2 class="reading-heading">{stop.label} <span>{stop.date}</span></h2>
        <div class="card-stack">
         {stop.cards.map((card,j)=><article class="journey-card" data-card={j} tabindex="-1" aria-label={`${stop.label}: ${card.title}`}>
-         <div class="card-inner"><div class="card-top"><p class="eyebrow">{card.label}</p><SketchIcon name={card.icon}/></div>
+         <div class="card-inner"><div class="card-top"><div class="card-identity">{card.institutions && <InstitutionLogos names={card.institutions}/>}<p class="eyebrow">{card.label}</p></div><SketchIcon name={card.icon}/></div>
          {i===0 ? <h1>{card.title}</h1> : <h2>{card.title}</h2>}
-         <p class="card-copy">{card.text}</p>
-         <div class="card-bottom"><p class="card-footnote">{card.footnote}</p>
-          {card.link && <a class="card-action" href={card.link} target={card.link.startsWith('mailto:')?undefined:'_blank'} rel="noopener noreferrer">{card.linkLabel}<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>}
+         <p class="card-copy"><HighlightedText text={card.text}/></p>
+         {card.metrics && <div class="card-results"><dl class="card-metrics">{card.metrics.map(metric=><div><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}</dl>{card.metricNote && <p class="metric-note">{card.metricNote}</p>}</div>}
+         <div class="card-bottom"><p class="card-footnote"><HighlightedText text={card.footnote}/></p>
+          {card.links && <div class="card-links">{card.links.map(link=><a class="card-action" href={link.url} aria-label={link.accessibleLabel} target={link.url.startsWith('mailto:')?undefined:'_blank'} rel="noopener noreferrer">{link.label}<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>)}</div>}
           {card.detail!==undefined && <button class="card-action" data-detail={card.detail} aria-haspopup="dialog">{i===0?'About me':'More about the work'}<span aria-hidden="true">+</span></button>}
           {i===5 && <div class="contact-links"><a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a><a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></div>}
          </div>
@@ -89,7 +94,7 @@ const arrow = 'M4 15 15 4M5 4h10v10';
   <h2 id="details-title">Valentino Guerrini</h2>
   <div data-detail-panel="0"><p>I’m an Italian computer engineer based in Zürich, working on hardware acceleration. My interests span digital design, computer architecture and reconfigurable computing.</p><p>I completed a double degree at Politecnico di Milano and the University of Illinois Chicago, alongside the Alta Scuola Politecnica programme.</p><dl><div><dt>At the workbench</dt><dd>C / C++, Verilog, Vivado, Vitis, MPI</dd></div><div><dt>Outside work</dt><dd>Mountains, running and good company.</dd></div></dl><a class="detail-link" href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">View my LinkedIn profile<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></div>
   <div data-detail-panel="1"><p>My journey starts around Piacenza, in northern Italy. It’s still home, even as university and research have taken me to Milan, Chicago and Zürich.</p><p>This site follows that route: the places I’ve lived, the problems I’ve worked on, and what I’m building now.</p><button class="detail-link" data-go="2">Continue to Milan<span aria-hidden="true">→</span></button></div>
-  <div data-detail-panel="2"><p>At Politecnico di Milano and NECSTLab, I worked on FPGA architectures for homomorphic encryption and quantum error correction. I also explored embedded cryptography as a research intern at STMicroelectronics.</p><p class="detail-note">BSc 2023 · MSc 2026 · Alta Scuola Politecnica</p>{projects.filter(p=>p.type==='hardware').map(p=><article class="detail-project"><p class="eyebrow">{p.fact}</p><h3>{p.short}</h3><p>{p.description}</p><a class="detail-link" href={p.link} target="_blank" rel="noopener noreferrer">View project<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></article>)}<a class="detail-link publication-link" href="https://ieeexplore.ieee.org/abstract/document/10596535" target="_blank" rel="noopener noreferrer">Read the RAW 2024 paper<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></div>
+  <div data-detail-panel="2"><p>At Politecnico di Milano and NECSTLab, I worked on FPGA architectures for homomorphic encryption and quantum error correction. I also explored embedded cryptography as a research intern at STMicroelectronics.</p><p class="detail-note">BSc 2023 · MSc 2026 · Alta Scuola Politecnica</p>{projects.filter(p=>p.type==='hardware').map(p=><article class="detail-project"><p class="eyebrow">{p.fact}</p><h3>{p.short}</h3><p>{p.description}</p><a class="detail-link" href={p.link} target="_blank" rel="noopener noreferrer">{p.linkLabel || "View project"}<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></article>)}<a class="detail-link publication-link" href={links.date2026} target="_blank" rel="noopener noreferrer">Read the DATE 2026 paper<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></div>
   <div data-detail-panel="3"><p>My double degree took me to the University of Illinois Chicago, where I researched communication algorithms for high-performance computing.</p><article class="detail-project"><p class="eyebrow">MS Computer Science · 2025</p><h3>Configurable hierarchical Allreduce</h3><p>{projects[1].description}</p><p class="detail-note">C / C++ · MPI · Polaris · Aurora</p><a class="detail-link" href={projects[1].link} target="_blank" rel="noopener noreferrer">View the Allreduce project<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></article></div>
   <div data-detail-panel="4"><p>I work on hardware accelerators for server SoCs at Huawei Research Center in Zürich. My focus is on computer architecture and efficient computation.</p><p>Beyond work, I’m drawn to the mountains, skiing, running and time with friends. Switzerland makes a pretty good base for that.</p><a class="detail-link" href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">View my experience<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></div>
   <div data-detail-panel="6">{otherProjects.map(p=><article class="detail-project"><p class="eyebrow">{p.category}</p><h3>{p.name}</h3><p>{p.description}</p><a class="detail-link" href={p.link} target="_blank" rel="noopener noreferrer">View project<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></article>)}</div>
