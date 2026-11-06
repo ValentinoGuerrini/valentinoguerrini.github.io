@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Valentino Guerrini",
-  title: "Computer Engineering Student",
-  description: "Portfolio website of Valentino Guerrini",
+  title: "Hardware Accelerator Researcher",
+  description: "Valentino Guerrini — hardware acceleration, computer architecture and reconfigurable computing.",
   accentColor: "#ff6f00ff",
   social: {
     email: "valentino.guerrini@outlook.com",

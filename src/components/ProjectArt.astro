@@ -1,0 +1,22 @@
+---
+const { kind } = Astro.props;
+---
+<svg viewBox="0 0 500 340" fill="none" aria-hidden="true" class={`project-art art-${kind}`}>
+ {kind === 'chip' ? <>
+  <path d="M70 200L234 100L438 176L273 285Z" fill="#214f4b" stroke="#83a083" stroke-width="2"/>
+  <path d="M70 200V215L273 301L438 191V176L273 285Z" fill="#173b39"/>
+  <g stroke="#c1a758" stroke-width="2">{Array.from({length:8},(_,i)=><><path d={`M${120+i*15} ${207+i*6}l34-21v-15l47-28`}/><path d={`M${274+i*14} ${263-i*9}l-30-13v-17l58-37`}/></>)}</g>
+  <path d="M171 180L246 134L341 169L266 219Z" fill="#b5b59f" stroke="#f1d9a3" stroke-width="5"/><path d="M171 180V196L266 234L341 185V169L266 219Z" fill="#75877c"/>
+  <path d="M191 178L248 144L319 170L263 204Z" fill="#e5dcc1"/>
+  <g fill="#d3bc78">{[0,1,2,3,4].map(i=><path d={`M${144+i*15} ${248+i*6}l9-5 13 5-9 6Z`}/>)}</g>
+  <path d="M132 161L156 146L178 154L154 170Z" fill="#e7d5a4"/><path d="M334 220L359 204L380 212L356 228Z" fill="#e7d5a4"/>
+ </> : kind === 'nodes' ? <>
+  <g stroke="#c5a568" stroke-width="2"><path d="M112 101L250 162L389 101M112 257L250 162L389 257M112 101V257M389 101V257"/><path d="M112 101L389 257M389 101L112 257" stroke-dasharray="4 6" opacity=".6"/></g>
+  {[{x:78,y:63},{x:355,y:63},{x:78,y:219},{x:355,y:219}].map(({x,y})=><g transform={`translate(${x} ${y})`}><path d="M0 12L33 0L67 13V62L34 75L0 62Z" fill="#2e5b55" stroke="#8faaa0"/><path d="M0 12L34 25L67 13M34 25V75" stroke="#b9c7ae"/><path d="M8 28L25 34M8 39L25 45M8 50L25 56" stroke="#c4ac68" stroke-width="3"/></g>)}
+  <path d="M208 145L250 122L292 145V190L250 214L208 190Z" fill="#d9bb7a" stroke="#f3dfb5"/><path d="M208 145L250 167L292 145M250 167V214" stroke="#947c49"/>
+ </> : <>
+  <g stroke="#a8b8a0" stroke-width="2">{Array.from({length:4},(_,r)=>Array.from({length:5},(_,c)=><><path d={`M${95+c*77} ${62+r*70}h${c<4?77:0}`}/><path d={`M${95+c*77} ${62+r*70}v${r<3?70:0}`}/></>))}</g>
+  <path d="M95 132H249V202H403M172 62V202H326V272" stroke="#d8b564" stroke-width="5"/>
+  {Array.from({length:4},(_,r)=>Array.from({length:5},(_,c)=><circle cx={95+c*77} cy={62+r*70} r={c===2&&r===2?12:7} fill={c===2&&r===2?'#e8c36e':'#406b60'} stroke="#d5d2ac" stroke-width="2"/>))}
+ </>}
+</svg>
