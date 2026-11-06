@@ -3,6 +3,8 @@ import { siteConfig } from '../config';
 import { story } from '../chapters';
 import { projects, otherProjects } from '../journey';
 import '../styles/journey.css';
+import SketchIcon from '../components/SketchIcon.astro';
+import {desktopRoute,landmarks} from '../map-layout';
 const arrow = 'M4 15 15 4M5 4h10v10';
 ---
 <!doctype html>
@@ -25,24 +27,30 @@ const arrow = 'M4 15 15 4M5 4h10v10';
  <title>Valentino Guerrini — An engineer’s journey</title>
 </head>
 <body>
- <a class="skip" href="#index" data-open-index>Skip to chapter and project index</a>
- <header class="site-header"><a class="signature" href="#beginning" data-go="0">Valentino Guerrini<span aria-hidden="true">.</span></a><button class="index-toggle" data-open-index aria-haspopup="dialog">Index <span class="index-icon" aria-hidden="true"><i></i><i></i></span></button></header>
+ <a class="skip" href="#beginning" data-skip>Skip to the cards</a>
+ <header class="site-header">
+  <a class="signature" href="#beginning" data-go="0">Valentino Guerrini<span aria-hidden="true">.</span></a>
+  <nav class="header-links" aria-label="Find me online">
+   <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>
+   <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>
+   <a href={`mailto:${siteConfig.social.email}`}>Email<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a>
+  </nav>
+ </header>
  <main id="journey" aria-label="An engineer’s journey">
   <div class="experience">
    <div class="journey-layout">
     <div class="map-column">
-     <p class="map-kicker"><span class="live-dot"></span> A journey in four places</p>
      <div class="map-surface" id="map-surface">
       <svg class="route-map" viewBox="0 0 420 760" preserveAspectRatio="none" aria-hidden="true">
-       <path class="route-base" id="route" d="M150 50 C105 60 95 72 130 112 C175 170 315 152 282 257 C260 330 100 310 135 421 C165 500 320 492 270 589 C245 642 145 642 175 720"/>
-       <path class="route-travelled" id="route-travelled" d="M150 50 C105 60 95 72 130 112 C175 170 315 152 282 257 C260 330 100 310 135 421 C165 500 320 492 270 589 C245 642 145 642 175 720"/>
-       {[{x:130,y:112},{x:282,y:257},{x:135,y:421},{x:270,y:589}].map((p,i)=><g class="route-node" data-node={i+1}><circle cx={p.x} cy={p.y} r="8"/><circle class="node-center" cx={p.x} cy={p.y} r="2.5"/></g>)}
-       <circle class="route-endpoint" cx="150" cy="50" r="3"/><circle class="route-endpoint" cx="175" cy="720" r="3"/>
+       <path class="route-base" id="route" d={desktopRoute}/>
+       <path class="route-travelled" id="route-travelled" d=""/>
+       {landmarks.map((p,i)=><g class="route-node" data-node={i+1}><circle cx={p.stopX} cy={p.y} r="6"/><circle class="node-center" cx={p.stopX} cy={p.y} r="2"/></g>)}
+       <circle class="route-endpoint" data-endpoint="start" cx="162" cy="56" r="3"/><circle class="route-endpoint" data-endpoint="end" cx="172" cy="720" r="3"/>
       </svg>
       <div class="scene" id="scene" aria-hidden="true"></div>
       <div class="fallback-traveller" id="fallback-traveller" aria-hidden="true"><span></span><i></i></div>
       <nav class="map-stops" aria-label="Places on the journey">
-       {[{x:55,y:22.7},{x:38,y:42.3},{x:57,y:63.9},{x:35,y:85.3}].map((p,i)=><a class="map-stop" href={`#${story[i+1].id}`} data-go={i+1} data-map-stop={i+1} style={`left:${p.x}%;top:${p.y}%`}><span>{story[i+1].label}</span><small>{story[i+1].number}</small></a>)}
+       {landmarks.map((p,i)=><a class="map-stop" href={`#${story[i+1].id}`} data-go={i+1} data-map-stop={i+1} style={`left:${p.x/420*100}%;top:${p.labelY/760*100}%`}><span>{story[i+1].label}</span></a>)}
       </nav>
      </div>
     </div>
@@ -52,8 +60,8 @@ const arrow = 'M4 15 15 4M5 4h10v10';
       {story.map((stop,i)=><section id={stop.id} class:list={['chapter',{'is-active':i===0}]} data-chapter={i} aria-label={stop.label}>
        <h2 class="reading-heading">{stop.label} <span>{stop.date}</span></h2>
        <div class="card-stack">
-        {stop.cards.map((card,j)=><article class="journey-card" data-card={j} aria-label={`${stop.label}: ${card.title}`}>
-         <div class="card-top"><p class="eyebrow">{card.label}</p><span class="card-number" aria-hidden="true">{String(j+1).padStart(2,'0')}</span></div>
+        {stop.cards.map((card,j)=><article class="journey-card" data-card={j} tabindex="-1" aria-label={`${stop.label}: ${card.title}`}>
+         <div class="card-inner"><div class="card-top"><p class="eyebrow">{card.label}</p><SketchIcon name={card.icon}/></div>
          {i===0 ? <h1>{card.title}</h1> : <h2>{card.title}</h2>}
          <p class="card-copy">{card.text}</p>
          <div class="card-bottom"><p class="card-footnote">{card.footnote}</p>
@@ -61,7 +69,7 @@ const arrow = 'M4 15 15 4M5 4h10v10';
           {card.detail!==undefined && <button class="card-action" data-detail={card.detail} aria-haspopup="dialog">{i===0?'About me':'More about the work'}<span aria-hidden="true">+</span></button>}
           {i===5 && <div class="contact-links"><a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a><a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></div>}
          </div>
-        </article>)}
+        </div></article>)}
        </div>
       </section>)}
      </div>
@@ -72,16 +80,10 @@ const arrow = 'M4 15 15 4M5 4h10v10';
      <p class="scroll-guide"><span id="scroll-guide">Scroll to start the journey</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M4 11l6 6 6-6"/></svg></p>
     </div>
    </div>
-   <footer class="experience-footer"><span id="route-status">An engineer’s journey</span><span>Based in Zürich</span></footer>
+   <footer class="experience-footer"><span id="route-status">An engineer’s journey</span><div class="footer-controls"><span>Based in Zürich</span><button id="motion-toggle" aria-pressed="false">Motion on</button></div></footer>
    <div class="progress" aria-hidden="true"><span></span></div>
   </div>
  </main>
- <dialog id="index" aria-labelledby="index-title"><div class="dialog-shell">
-  <div class="dialog-header"><h2 id="index-title">Index</h2><button class="close" data-close aria-label="Close index">×</button></div>
-  <nav class="index-chapters" aria-label="Jump to a chapter">{story.map((c,i)=><a href={`#${c.id}`} data-go={i}><span>{c.number}</span>{c.label}<span aria-hidden="true">↗</span></a>)}</nav>
-  <div class="index-work"><p class="eyebrow">Selected work</p><button data-detail="2">FPGA & cryptography <span>+</span></button><button data-detail="3">HPC & Allreduce <span>+</span></button><button data-detail="6">Other projects <span>+</span></button></div>
-  <div class="index-bottom"><button id="motion-toggle" aria-pressed="false">Motion on</button><a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a><a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a></div>
- </div></dialog>
  <dialog id="details" aria-labelledby="details-title"><div class="dialog-shell details-shell">
   <div class="dialog-header"><p class="eyebrow" id="details-label">About</p><button class="close" data-close aria-label="Close details">×</button></div>
   <h2 id="details-title">Valentino Guerrini</h2>
@@ -92,7 +94,7 @@ const arrow = 'M4 15 15 4M5 4h10v10';
   <div data-detail-panel="4"><p>I work on hardware accelerators for server SoCs at Huawei Research Center in Zürich. My focus is on computer architecture and efficient computation.</p><p>Beyond work, I’m drawn to the mountains, skiing, running and time with friends. Switzerland makes a pretty good base for that.</p><a class="detail-link" href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">View my experience<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></div>
   <div data-detail-panel="6">{otherProjects.map(p=><article class="detail-project"><p class="eyebrow">{p.category}</p><h3>{p.name}</h3><p>{p.description}</p><a class="detail-link" href={p.link} target="_blank" rel="noopener noreferrer">View project<svg viewBox="0 0 20 20" aria-hidden="true"><path d={arrow}/></svg></a></article>)}</div>
  </div></dialog>
- <noscript><style>.card-action[data-detail]{display:none}.index-toggle{display:none}</style><div class="no-js-links"><a href={siteConfig.social.github}>Projects on GitHub</a><a href={siteConfig.social.linkedin}>Experience on LinkedIn</a></div></noscript>
+ <noscript><style>.card-action[data-detail]{display:none}#motion-toggle{display:none}</style><div class="no-js-links"><a href={siteConfig.social.github}>Projects on GitHub</a><a href={siteConfig.social.linkedin}>Experience on LinkedIn</a></div></noscript>
  <script>import '../scripts/journey';</script>
  <script is:inline type="module" src="/assets/motion/motion.js"></script>
 </body>

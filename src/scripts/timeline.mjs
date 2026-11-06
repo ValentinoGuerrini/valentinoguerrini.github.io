@@ -13,7 +13,7 @@ export function createTimeline(counts) {
   for(let card=0;card<count;card++){
    anchors[stop].push(time+.02);
    add('hold',card===0?.56:.48,stop,card);
-   if(card<count-1)add('flip',.42,stop,card);
+   if(card<count-1)add('flip',.64,stop,card);
   }
   if(stop<counts.length-1)add('travel',.92,stop,count-1);
  });

@@ -16,27 +16,24 @@ h1,h2,h3,p{margin:0;font-weight:400}
 button:disabled{cursor:default;opacity:.3}
 .skip{position:fixed;z-index:100;top:8px;left:20px;padding:10px;background:var(--paper);transform:translateY(-150%)}
 .skip:focus{transform:none}
-.site-header{position:fixed;z-index:10;top:0;inset-inline:0;height:92px;padding:0 var(--gut);display:flex;align-items:center;justify-content:space-between;background:var(--paper)}
+.site-header{position:fixed;z-index:10;top:0;inset-inline:0;height:92px;padding:0 var(--gut);display:flex;align-items:center;justify-content:flex-start;gap:48px;background:var(--paper)}
 .signature{font-size:15px;letter-spacing:-.025em}
 .signature span{color:var(--accent);font-weight:500}
-.index-toggle{display:inline-flex;align-items:center;gap:14px;min-height:44px;padding:0;font-size:13px}
-.index-icon{width:15px;display:grid;gap:5px}.index-icon i{height:1px;background:currentColor;transition:transform .2s}
-.index-toggle:hover i:first-child{transform:translateX(3px)}.index-toggle:hover i:last-child{transform:translateX(-3px)}
 .experience{position:relative;padding:120px var(--gut) 70px}
 .journey-layout{max-width:1220px;margin:auto}
 .map-column{display:none}
 .deck-heading,.deck-navigation,.scroll-guide{display:none}
 .reading-heading{font-size:22px;margin:32px 0 20px}.reading-heading span{display:block;font:11px var(--mono);color:var(--muted);margin-top:4px}
 .chapter{scroll-margin-top:110px;max-width:720px;margin:auto}
-.journey-card{background:var(--surface);border:1px solid #dbddd3;border-radius:8px;padding:clamp(25px,3vw,44px);margin-bottom:20px;display:flex;flex-direction:column;box-shadow:0 9px 24px #263e3805}
-.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:28px}
+.journey-card{background:var(--surface);border:1px solid #dbddd3;border-radius:8px;margin-bottom:20px;display:block;box-shadow:0 9px 24px #263e3805}
+.card-inner{padding:26px 32px;backface-visibility:hidden}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:12px;min-height:50px}
 .eyebrow{font:10px/1.8 var(--mono);letter-spacing:.025em;color:var(--muted)}
-.card-number{font:11px/1.8 var(--mono);color:#949b8e}
-.journey-card h1,.journey-card h2{font-size:clamp(30px,3.05vw,45px);line-height:1.13;letter-spacing:-.055em;max-width:450px}
-.journey-card h1{font-size:clamp(40px,4vw,58px)}
-.card-copy{font-size:16px;line-height:1.7;color:#5b685f;margin-top:22px;max-width:450px;text-wrap:pretty}
-.card-bottom{margin-top:auto;padding-top:28px}
-.card-footnote{padding-top:17px;border-top:1px solid #e2e4dc;font:10px/1.8 var(--mono);color:#7a8073}
+.journey-card h1,.journey-card h2{font-size:clamp(30px,2.7vw,40px);line-height:1.13;letter-spacing:-.055em;max-width:450px}
+.journey-card h1{font-size:clamp(38px,3.5vw,50px)}
+.card-copy{font-size:16px;line-height:1.7;color:#5b685f;margin-top:16px;max-width:450px;text-wrap:pretty}
+.card-bottom{margin-top:20px;padding-top:0}
+.card-footnote{padding-top:12px;border-top:1px solid #e2e4dc;font:10px/1.8 var(--mono);color:#7a8073}
 .card-action{display:inline-flex;align-items:center;justify-content:space-between;gap:28px;font-size:12px;padding:10px 0;margin-top:9px;min-height:44px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
 .card-action:hover{color:var(--accent);border-color:var(--accent)}
 .card-action svg{width:16px;height:16px;transition:transform .2s}.card-action:hover svg{transform:translate(2px,-2px)}
@@ -49,8 +46,6 @@ html.enhanced #journey{height:var(--journey-height,1300svh)}
 html.enhanced .experience{position:sticky;top:0;height:100svh;min-height:650px;overflow:hidden;padding:98px var(--gut) 65px}
 html.enhanced .journey-layout{height:100%;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:clamp(35px,5vw,85px);align-items:center}
 html.enhanced .map-column{display:flex;position:relative;flex-direction:column;align-self:stretch;min-height:0}
-.map-kicker{font:9px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);display:flex;align-items:center;gap:9px;padding-left:12px;height:25px;flex-shrink:0}
-.live-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
 .map-surface{position:relative;flex:1;min-height:0}
 .route-map,.scene{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .route-map path{vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
@@ -63,7 +58,6 @@ html.enhanced .map-column{display:flex;position:relative;flex-direction:column;a
 .scene canvas,.scene>svg{display:block;width:100%;height:100%;stroke:none}
 .map-stops{position:absolute;inset:0;pointer-events:none}
 .map-stop{position:absolute;display:flex;align-items:center;gap:8px;transform:translate(-50%,-50%);min-height:40px;pointer-events:auto;white-space:nowrap;color:#8b9486;font-size:12px;letter-spacing:-.02em;transition:color .2s}
-.map-stop small{font:8px var(--mono);color:#8c9687}
 .map-stop.is-active{color:var(--ink)}.map-stop.is-active span{border-bottom:1px solid var(--accent)}
 .map-stop:hover{color:var(--ink)}
 .fallback-traveller{position:absolute;left:35%;top:4%;width:16px;height:32px;transform:translate(-50%,-100%);pointer-events:none}
@@ -74,12 +68,12 @@ html.enhanced .map-column{display:flex;position:relative;flex-direction:column;a
 html.enhanced .deck-column{min-width:0;max-width:570px;width:100%;margin:auto;align-self:center}
 html.enhanced .deck-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:23px;padding-inline:2px}
 .deck-heading p{font-size:21px;letter-spacing:-.035em}.deck-heading>span{font:10px var(--mono);color:var(--muted)}
-html.enhanced .decks{position:relative;height:clamp(440px,55svh,540px)}
+
 html.enhanced .chapter{position:absolute;inset:0;max-width:none;visibility:hidden;pointer-events:none}
 html.enhanced .chapter.is-active{visibility:visible;pointer-events:auto}
 html.enhanced .reading-heading{display:none}
-html.enhanced .card-stack{position:relative;height:100%;isolation:isolate}
-html.enhanced .journey-card{position:absolute;inset:0;margin:0;transform-origin:50% 100%;will-change:transform,opacity;box-shadow:0 12px 24px #263e3807,0 1px 2px #263e3803;overflow:hidden}
+html.enhanced .card-stack{position:relative;height:100%;isolation:isolate;perspective:1100px}
+html.enhanced .journey-card{position:absolute;inset:0;margin:0;transform-origin:50% 50%;will-change:transform;box-shadow:0 12px 24px #263e3807,0 1px 2px #263e3803;overflow:hidden}
 html.enhanced .journey-card:not(.is-front){pointer-events:none}
 html.enhanced .deck-navigation{display:flex;justify-content:space-between;align-items:center;padding:29px 2px 0;gap:12px}
 .deck-pagination{display:flex;align-items:center;gap:15px}#card-counter{font:10px var(--mono);color:var(--muted);white-space:nowrap}
@@ -97,7 +91,7 @@ html.enhanced .experience-footer{position:absolute;bottom:24px;left:var(--gut);r
 html.enhanced .progress{display:block;position:absolute;bottom:0;left:var(--gut);right:var(--gut);height:1px;background:var(--line)}
 .progress span{display:block;width:100%;height:100%;transform-origin:left;transform:scaleX(0);background:var(--accent)}
 .no-js-links{display:flex;justify-content:center;gap:32px;padding:40px}
-/* One surface for both the index and chapter details. */
+/* Additional project details. */
 dialog { color: var(--ink); background: var(--paper); border: 1px solid var(--line); padding: 0; width: min(620px, calc(100% - 40px)); max-height: min(85svh, 850px); overscroll-behavior: contain; border-radius: 4px; box-shadow: 0 24px 100px #17332d20; }
 dialog::backdrop { background: #25362f45; backdrop-filter: blur(5px); }
 .dialog-shell { padding: 36px 40px; }
@@ -105,17 +99,6 @@ dialog::backdrop { background: #25362f45; backdrop-filter: blur(5px); }
 .dialog-header h2 { font-size: 24px; letter-spacing: -.04em; }
 .close { width: 44px; height: 44px; margin: -10px -12px -10px 0; font-size: 28px; font-weight: 400; color: var(--muted); }
 .close:hover { color: var(--ink); }
-.index-chapters { display: grid; }
-.index-chapters a { display: flex; gap: 24px; align-items: center; min-height: 56px; border-bottom: 1px solid var(--line); font-size: 22px; letter-spacing: -.03em; transition: color .2s; }
-.index-chapters a:hover { color: var(--accent); }
-.index-chapters a span:first-child { font: 10px var(--mono); color: var(--muted); }
-.index-chapters a span:last-child { margin-left: auto; font-size: 15px; }
-.index-work { margin-top: 32px; }
-.index-work button { display: flex; justify-content: space-between; align-items: center; text-align: left; width: 100%; min-height: 44px; padding: 8px 0; font-size: 14px; }
-.index-work button:hover { color: var(--accent); }
-.index-work .eyebrow { margin-bottom: 8px; }
-.index-bottom { display: flex; align-items: center; gap: 24px; padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--line); font-size: 11px; color: var(--muted); }
-.index-bottom button { padding: 0; margin-right: auto; min-height: 44px; }
 .details-shell > h2 { font-size: 36px; line-height: 1.15; letter-spacing: -.045em; margin-bottom: 24px; }
 [data-detail-panel][hidden] { display: none; }
 [data-detail-panel] > p, .detail-project > p { color: #57635c; margin-top: 16px; font-size: 16px; line-height: 1.7; }
@@ -133,25 +116,24 @@ dd { margin: 0; font-size: 14px; }
 @media(max-width:1024px){
  :root{--gut:32px}
  html.enhanced .journey-layout{grid-template-columns:minmax(0,.75fr) minmax(0,1fr);gap:25px}
- .journey-card{padding:28px}.journey-card h1{font-size:45px}.journey-card h2{font-size:34px}
- .card-top{margin-bottom:22px}.card-copy{font-size:15px}.card-bottom{padding-top:20px}
- .map-kicker{font-size:8px;letter-spacing:0;padding-left:0}
+ .card-inner{padding:28px}.journey-card h1{font-size:45px}.journey-card h2{font-size:34px}
+ .card-top{margin-bottom:10px}.card-copy{font-size:15px}.card-bottom{padding-top:0}
  .deck-heading p{font-size:19px}.deck-heading>span{font-size:9px}
 }
 @media(max-width:700px){
  :root{--gut:18px}
- .site-header{height:72px}.signature{font-size:13px}.index-toggle{font-size:12px;gap:12px}
+ .site-header{height:72px}.signature{font-size:13px}
  html.enhanced .experience{padding:80px var(--gut) 54px;min-height:620px}
  html.enhanced .journey-layout{grid-template-columns:88px minmax(0,1fr);gap:14px}
- .map-kicker{display:none}.map-stop{font-size:9px;gap:0}.map-stop small{display:none}
- .map-stop[data-map-stop]{left:50%!important}
+ .map-stop{font-size:9px;gap:0}
+ .map-stop[data-map-stop]{left:71.43%!important}
  .route-base,.route-travelled{stroke-width:1.5}
- html.enhanced .decks{height:clamp(415px,60svh,520px)}
- .journey-card{padding:22px 20px;border-radius:6px}
- .card-top{gap:10px;margin-bottom:19px}.eyebrow{font-size:8px;line-height:1.8}.card-number{font-size:9px}
+
+ .card-inner{padding:22px 20px;border-radius:6px}
+ .card-top{gap:10px;margin-bottom:10px}.eyebrow{font-size:8px;line-height:1.8}
  .journey-card h1{font-size:34px;letter-spacing:-.06em}.journey-card h2{font-size:29px;line-height:1.14}
  .card-copy{font-size:13px;line-height:1.7;margin-top:16px;text-wrap:initial}
- .card-bottom{padding-top:18px}.card-footnote{font-size:8px;padding-top:13px}.card-action{font-size:10px;gap:10px;margin-top:5px}
+ .card-bottom{padding-top:0;margin-top:16px}.card-footnote{font-size:8px;padding-top:13px}.card-action{font-size:10px;gap:10px;margin-top:5px}
  .card-action svg{width:14px;height:14px;flex-shrink:0}
  .contact-links{margin-left:0;display:flex;font-size:10px;gap:20px}
  html.enhanced .deck-heading{margin-bottom:17px;display:block}.deck-heading p{font-size:18px}.deck-heading>span{font-size:8px;margin-top:3px;display:block}
@@ -161,22 +143,22 @@ dd { margin: 0; font-size: 14px; }
  html.enhanced .scroll-guide{font-size:9px;gap:4px;margin-top:13px;text-align:center}
  html.enhanced .experience-footer{font-size:8px;bottom:20px}.experience-footer{font-size:9px}
  .dialog-shell{padding:28px 24px}dialog{max-height:88svh}.dialog-header{margin-bottom:24px}.details-shell>h2{font-size:30px}
- .index-chapters a{min-height:48px;font-size:20px}.index-work{margin-top:24px}.index-bottom{margin-top:16px;padding-top:12px}.index-work button{font-size:13px}
+
  html.reading .journey-card h2{font-size:32px}html.reading .card-copy{font-size:16px}
 }
 @media(max-width:380px){
  :root{--gut:14px}html.enhanced .journey-layout{grid-template-columns:74px minmax(0,1fr);gap:10px}
- .journey-card{padding:20px 17px}.journey-card h2{font-size:27px}.card-copy{font-size:12.5px}
+ .card-inner{padding:20px 17px}.journey-card h2{font-size:27px}.card-copy{font-size:12.5px}
  .map-stop{font-size:8px}.card-top{margin-bottom:16px}
 }
 @media(max-height:740px) and (min-width:701px){
  html.enhanced .experience{padding-top:84px;padding-bottom:50px;min-height:620px}.site-header{height:76px}
- html.enhanced .decks{height:400px}.journey-card{padding:24px 30px}.card-top{margin-bottom:15px}
- .journey-card h1{font-size:45px}.journey-card h2{font-size:34px}.card-copy{font-size:14px;margin-top:15px}.card-bottom{padding-top:16px}
+ .card-inner{padding:24px 30px}.card-top{margin-bottom:15px}
+ .journey-card h1{font-size:45px}.journey-card h2{font-size:34px}.card-copy{font-size:14px;margin-top:15px}.card-bottom{padding-top:0}
  html.enhanced .deck-heading{margin-bottom:15px}html.enhanced .deck-navigation{padding-top:22px}html.enhanced .scroll-guide{margin-top:8px}
 }
 @media(max-height:720px) and (max-width:700px){
- html.enhanced .decks{height:405px}.card-copy{line-height:1.6}.card-top{margin-bottom:14px}.card-bottom{padding-top:13px}
+ .card-copy{line-height:1.6}.card-top{margin-bottom:14px}.card-bottom{padding-top:0}
  html.enhanced .deck-heading{margin-bottom:12px}.deck-heading p{font-size:16px}html.enhanced .scroll-guide{display:none}
  html.enhanced .deck-navigation{padding-top:22px}.card-action{margin-top:0}.card-footnote{padding-top:10px}
 }
@@ -190,3 +172,28 @@ html.enhanced .journey-card.is-back{background:#eeeee5;box-shadow:0 2px 5px #263
 html.enhanced .journey-card.is-back>*{visibility:hidden}
 .scene>svg{background:transparent!important}
 html.enhanced .chapter:not(.is-active){display:none}
+.header-links{display:flex;align-items:center;gap:26px;font-size:12px;color:var(--muted)}
+.header-links a{display:flex;align-items:center;gap:6px;min-height:44px;transition:color .2s}
+.header-links a:hover{color:var(--ink)}.header-links svg{width:12px;height:12px;transition:transform .2s}
+.header-links a:hover svg{transform:translate(2px,-2px)}
+.sketch-icon{width:60px;height:60px;flex-shrink:0;color:#496156;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sketch-echo{opacity:.22;stroke-width:.8}.sketch-accent{stroke:var(--accent);opacity:.65;stroke-width:1}
+html.enhanced .decks{position:relative;height:var(--deck-height,390px);transition:height .28s ease}
+html.enhanced .journey-card:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+html.enhanced .journey-card.is-back{background:#efeee5}
+.footer-controls{display:flex;align-items:center;gap:24px}.footer-controls button{font:inherit;padding:8px 0;color:var(--muted)}
+.footer-controls button:hover{color:var(--ink)}
+html.reading .experience-footer{position:fixed;z-index:10;bottom:0;left:0;right:0;background:var(--paper);padding:12px var(--gut)}
+@media(max-width:1024px){.card-inner{padding:24px 26px}.card-top{min-height:42px}.sketch-icon{width:50px;height:50px}.card-bottom{margin-top:18px}}
+@media(max-width:700px){
+ .site-header{gap:23px}.header-links{gap:16px;font-size:10px}.header-links svg{display:none}
+ .card-inner{padding:19px 19px}.card-top{min-height:35px;gap:9px;margin-bottom:10px}.sketch-icon{width:38px;height:38px}
+ .journey-card{border-radius:6px}.journey-card h2{font-size:27px}.journey-card h1{font-size:32px}
+ .card-copy{margin-top:13px}.card-bottom{margin-top:15px;padding-top:0}.card-footnote{padding-top:10px}
+ .footer-controls{gap:13px}.footer-controls>span{display:none}
+ html.enhanced .deck-navigation{padding-top:33px}
+ .fallback-traveller{transform:translate(-50%,-100%) scale(1.1)}
+}
+@media(max-width:380px){.site-header{gap:18px}.header-links{gap:13px;font-size:10px}.card-inner{padding:17px}.card-top{margin-bottom:9px}.journey-card h2{font-size:26px}.sketch-icon{width:35px;height:35px}}
+@media(max-height:720px) and (max-width:700px){.card-inner{padding:15px 17px}.card-top{min-height:32px}.sketch-icon{width:32px;height:32px}.card-copy{font-size:12.5px;line-height:1.6}.card-bottom{margin-top:12px}.card-action{min-height:36px}.journey-card h2{font-size:25px}}
+@media(max-width:700px){.route-node,.route-endpoint{display:none}}
