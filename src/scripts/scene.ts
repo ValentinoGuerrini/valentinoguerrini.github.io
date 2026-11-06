@@ -126,14 +126,17 @@ export function createScene(host:HTMLElement,invalidate:()=>void){
  const tablet=new THREE.Group();person.add(tablet);tablet.position.set(0,.42,.23);tablet.rotation.x=-.3;
  box(tablet,0,0,0,.25,.19,.025,colors.deep);box(tablet,0,.012,.02,.205,.135,.012,colors.pale);
  for(let i=0;i<3;i++)box(tablet,-.02,.045-i*.035,.03,.11,.008,.005,colors.green);
- let width=0,height=0,unit=1,small=false;
+ let width=0,height=0,unit=1,small=false,contextLost=false,resizePending=true;
  function world(p:Position){return {x:(p.x/420-.5)*width/unit,y:(.5-p.y/760)*height/unit};}
  function resize(){
-  width=host.clientWidth;height=host.clientHeight;if(!width||!height)return;unit=height/760*55;
+  const nextWidth=host.clientWidth,nextHeight=host.clientHeight,nextSmall=matchMedia('(max-width:700px)').matches;
+  if(!nextWidth||!nextHeight)return false;
+  if(width===nextWidth&&height===nextHeight&&small===nextSmall)return true;
+  width=nextWidth;height=nextHeight;unit=height/760*55;
   renderer.setSize(width,height,false);camera.left=-width/unit/2;camera.right=width/unit/2;camera.top=height/unit/2;camera.bottom=-height/unit/2;camera.updateProjectionMatrix();
-  small=matchMedia('(max-width:700px)').matches;
+  small=nextSmall;
   models.forEach((g,i)=>{const p=world({x:small?phoneX.landmark:landmarks[i].x,y:landmarks[i].y});g.position.set(p.x,p.y,0);g.scale.setScalar(small?.4:.9);});
-  person.scale.setScalar(small?1.08:1.3);invalidate();
+  person.scale.setScalar(small?1.08:1.3);return true;
  }
  const paper=new THREE.Color(0xf5f3ed);let lastActive=-1,previousFraction=0,facing=1;
  type Action={icon:string;nextIcon?:string;blend:number;phase:number;travel:boolean};
@@ -147,6 +150,10 @@ export function createScene(host:HTMLElement,invalidate:()=>void){
   return {lx:0,rx:-1.65,lz:-.18,rz:.3+wave*.07,book:0,tablet:0,nod:wave*.04};
  }
  function render(position:Position,tangent:Position,pathFraction:number,active:number,moving:boolean,action:Action){
+  // setSize clears the WebGL buffer: resize only when needed, in the same
+  // animation frame as the redraw, never from the ResizeObserver callback.
+  if(contextLost||(resizePending&&!resize()))return;
+  resizePending=false;
   const p=world(position);person.position.set(p.x,p.y,5);
   limbs.forEach(l=>l.rotation.set(0,0,0));book.visible=false;tablet.visible=false;
   if(action.travel){
@@ -164,10 +171,11 @@ export function createScene(host:HTMLElement,invalidate:()=>void){
   previousFraction=pathFraction;
   if(active!==lastActive){parts.forEach((meshes,i)=>{const fade=i+1===active?0:i+1<active?.08:.22;meshes.forEach(m=>(m.material as THREE.MeshStandardMaterial).color.copy(m.userData.color).lerp(paper,fade));});lastActive=active;}
   renderer.render(scene,camera);
+  host.parentElement!.classList.add('scene-ready');
  }
- const observer=new ResizeObserver(resize);observer.observe(host);resize();host.parentElement!.classList.add('scene-ready');
- const lost=(event:Event)=>{event.preventDefault();host.parentElement!.classList.remove('scene-ready');};
- const restored=()=>{host.parentElement!.classList.add('scene-ready');invalidate();};
+ const observer=new ResizeObserver(()=>{resizePending=true;invalidate();});observer.observe(host);
+ const lost=(event:Event)=>{event.preventDefault();contextLost=true;host.parentElement!.classList.remove('scene-ready');};
+ const restored=()=>{contextLost=false;resizePending=true;invalidate();};
  renderer.domElement.addEventListener('webglcontextlost',lost);renderer.domElement.addEventListener('webglcontextrestored',restored);
  return {render,dispose(){observer.disconnect();renderer.domElement.removeEventListener('webglcontextlost',lost);renderer.domElement.removeEventListener('webglcontextrestored',restored);scene.traverse(o=>{if(o instanceof THREE.Mesh){o.geometry.dispose();(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose());}});if(renderer instanceof THREE.WebGLRenderer)renderer.dispose();renderer.domElement.remove();host.parentElement!.classList.remove('scene-ready');}};
 }
