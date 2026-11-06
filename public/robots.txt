@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://valentinoguerrini.github.io/sitemap.xml
